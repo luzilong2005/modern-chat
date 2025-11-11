@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "language": "English",
+        "languageCode": "en-US"
+    },
+    "ui": {
+        "titlebar": {
+            "close": "Close",
+            "minimize": "Minimize",
+            "maximize": "Maximize",
+            "unmaximize": "Restore"
+        },
+        "sidebar": {
+            "chat": "Chat",
+            "history": "History",
+            "about": "About",
+            "settings": "Settings"
+        }
+    },
+    "pages": {
+        "chat": {
+            "search": "Search",
+            "addNewConversation": "Add New Conversation"
+        },
+        "about": {
+            "github": "GitHub",
+            "docs": "Docs"
+        },
+        "settings": {
+            "appearance": {
+                "title": "Appearance",
+                "themeSelector": {
+                    "light": "Light",
+                    "dark": "Dark",
+                    "system": "System"
+                },
+                "theme": "Theme",
+                "language": "Language"
+            },
+            "advanced": {
+                "title": "Advanced",
+                "tray": "System Tray",
+                "configuration": "Configuration",
+                "log": "Log",
+                "exportSettings": "Export Settings",
+                "importSettings": "Import Settings",
+                "openLogDir": "Open Log Directory",
+                "cleanupLogs": "Cleanup Logs"
+            }
+        }
+    },
+    "window": {
+        "settings": "Settings",
+        "about": "About"
+    },
+    "tray": {
+        "openMainWindow": "Open Main Window",
+        "quit": "Quit"
+    }
+}

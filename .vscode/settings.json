@@ -1,0 +1,34 @@
+{
+    "cSpell.words": [
+        "classnames",
+        "contextmenu",
+        "lucide",
+        "luzilong",
+        "maximizable",
+        "minimizable",
+        "nsis",
+        "packagejson",
+        "persistedstate",
+        "srgb",
+        "titlebar",
+        "trivago",
+        "undocked",
+        "unmaximize",
+        "vueuse"
+    ],
+    "prettier.configPath": ".prettierrc.yaml",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "text.html meta.tag.other.unrecognized.html.derivative entity.name.tag",
+                "settings": {
+                    "foreground": "#ffca85",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    }
+}

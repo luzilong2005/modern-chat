@@ -1,0 +1,8 @@
+.prettierignore
+.gitignored
+*lock*
+LICENSE
+README*
+**/dist
+release
+**/node_modules
