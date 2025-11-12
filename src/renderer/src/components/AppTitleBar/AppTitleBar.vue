@@ -7,20 +7,20 @@
             <AppTitleBarButton
                 v-if="props.minimizable"
                 :icon="MinusIcon"
-                :tooltip="t('ui.titlebar.minimize')"
+                :tooltip="t('app.titlebar.minimize')"
                 @click="handleMinimize"
             />
             <AppTitleBarButton
                 v-if="props.maximizable"
                 :icon="maximized ? MinimizeIcon : MaximizeIcon"
-                :tooltip="maximized ? t('ui.titlebar.unmaximize') : t('ui.titlebar.maximize')"
+                :tooltip="maximized ? t('app.titlebar.unmaximize') : t('app.titlebar.maximize')"
                 @click="handleMaximize"
             />
             <AppTitleBarButton
                 class="hover:bg-red-400"
                 v-if="props.closable"
                 :icon="XIcon"
-                :tooltip="t('ui.titlebar.close')"
+                :tooltip="t('app.titlebar.close')"
                 @click="handleClose"
             />
         </div>

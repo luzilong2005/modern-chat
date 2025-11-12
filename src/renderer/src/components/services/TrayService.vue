@@ -1,3 +1,4 @@
+<template></template>
 <script setup lang="ts">
 import { ipc } from "@renderer/apis";
 import { type I18nMessageSchema } from "@renderer/i18n";
@@ -11,11 +12,11 @@ const openTray = async () => {
     await ipc.invoke("tray:open", [
         {
             code: TRAY_CONTEXTMENU_CODE.OPEN_MAIN_WINDOW,
-            label: t("tray.openMainWindow"),
+            label: t("app.tray.openMainWindow"),
         },
         {
             code: TRAY_CONTEXTMENU_CODE.QUIT,
-            label: t("tray.quit"),
+            label: t("app.tray.quit"),
         },
     ]);
     ipc.on("tray:clicked", (_, code) => {

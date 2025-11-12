@@ -31,16 +31,16 @@ class WindowService extends BaseService {
         ipc.handle("window:is-minimizable", (ev) => BrowserWindow.fromWebContents(ev.sender)!.isMinimizable());
         ipc.handle("window:close", (ev) => {
             const win = BrowserWindow.fromWebContents(ev.sender);
-            if (trayService.getTray()) {
-                if (win === this.getMainWindow()) {
-                    win?.hide();
-                }
+            if (win === this.getMainWindow() && trayService.getTray()) {
+                win?.hide();
+            } else {
+                win?.close();
             }
-            win?.close();
         });
-        ipc.handle('window:open',(_, name, route)=>{
+        ipc.handle("window:open", (_, name, route) => {
+            if (name === WINDOW_NAME.MAIN) return this.openMainWindow();
             this.create(name, windowTemplateMap[name].options, route);
-        })
+        });
     }
 
     public init() {
@@ -54,8 +54,10 @@ class WindowService extends BaseService {
         this.setRoute(win, route ?? "/");
         this.windowInstances.set(name, win);
         win.on("closed", () => this.windowInstances.delete(name));
-        if (isDev) win.webContents.openDevTools({ mode: "undocked" });
-        logService.info(`Window ${name} created`);
+        if (isDev) {
+            win.webContents.openDevTools({ mode: "detach" });
+        }
+        logService.info(`Window {${name}} created`);
         return win;
     }
 

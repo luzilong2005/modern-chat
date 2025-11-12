@@ -3,7 +3,7 @@
         "language": "简体中文",
         "languageCode": "zh-CN"
     },
-    "ui": {
+    "app": {
         "titlebar": {
             "close": "关闭",
             "minimize": "最小化",
@@ -18,7 +18,14 @@
         },
         "contextmenu": {
             "copy": "复制",
-            "delete": "删除"
+            "delete": "删除",
+            "top": "置顶",
+            "refresh": "刷新",
+            "rename": "重命名"
+        },
+        "tray": {
+            "openMainWindow": "打开主窗口",
+            "quit": "退出"
         }
     },
     "pages": {
@@ -52,7 +59,45 @@
                 "cleanupLogs": "清理日志",
                 "aiModel": "AI模型",
                 "search": "搜索",
-                "button": { "add": "添加", "edit": "编辑", "delete": "删除" }
+                "button": { "add": "添加", "edit": "编辑", "delete": "删除" },
+                "dialog": {
+                    "delete-model": {
+                        "title": "删除模型",
+                        "content": "确定要删除模型吗？",
+                        "button": {
+                            "ok": "确定",
+                            "cancel": "取消"
+                        }
+                    },
+                    "add-model": {
+                        "title": "添加模型",
+                        "form": {
+                            "displayName": "显示的名称",
+                            "model": "模型",
+                            "apiKey": "API密钥",
+                            "baseURL": "URL地址",
+                            "required": "必填"
+                        },
+                        "button": {
+                            "ok": "确定",
+                            "cancel": "取消"
+                        }
+                    },
+                    "edit-model": {
+                        "title": "编辑模型",
+                        "form": {
+                            "displayName": "显示的名称",
+                            "model": "模型",
+                            "apiKey": "API密钥",
+                            "baseURL": "URL地址",
+                            "required": "必填"
+                        },
+                        "button": {
+                            "ok": "确定",
+                            "cancel": "取消"
+                        }
+                    }
+                }
             }
         },
         "history": {
@@ -63,9 +108,5 @@
     "window": {
         "settings": "设置",
         "about": "关于"
-    },
-    "tray": {
-        "openMainWindow": "打开主窗口",
-        "quit": "退出"
     }
 }

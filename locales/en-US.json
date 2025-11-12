@@ -18,7 +18,10 @@
         },
         "contextmenu": {
             "copy": "Copy",
-            "delete": "Delete"
+            "delete": "Delete",
+            "top": "Pin to Top",
+            "refresh": "Refresh",
+            "rename": "Rename"
         }
     },
     "pages": {
@@ -52,7 +55,45 @@
                 "cleanupLogs": "Cleanup Logs",
                 "aiModel": "AI Model",
                 "search": "Search",
-                "button": { "add": "Add", "edit": "Edit", "delete": "Delete" }
+                "button": { "add": "Add", "edit": "Edit", "delete": "Delete" },
+                "dialog": {
+                    "delete-model": {
+                        "title": "Delete Model",
+                        "content": "Are you sure you want to delete this model?",
+                        "button": {
+                            "ok": "OK",
+                            "cancel": "Cancel"
+                        }
+                    },
+                    "add-model": {
+                        "title": "Add Model",
+                        "form": {
+                            "displayName": "Display Name",
+                            "model": "Model",
+                            "apiKey": "API Key",
+                            "baseURL": "Base URL",
+                            "required": "Required"
+                        },
+                        "button": {
+                            "ok": "OK",
+                            "cancel": "Cancel"
+                        }
+                    },
+                    "edit-model": {
+                        "title": "Edit Model",
+                        "form": {
+                            "displayName": "Display Name",
+                            "model": "Model",
+                            "apiKey": "API Key",
+                            "baseURL": "Base URL",
+                            "required": "Required"
+                        },
+                        "button": {
+                            "ok": "OK",
+                            "cancel": "Cancel"
+                        }
+                    }
+                }
             }
         },
         "history": {

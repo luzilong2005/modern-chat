@@ -6,8 +6,7 @@ const setup = () => {
     const themeMode = shallowRef<THEME_MODE>(THEME_MODE.SYSTEM);
     const language = shallowRef<string>("zh-CN");
     const trayEnabled = shallowRef<boolean>(true);
-    const aiModels = ref<Array<AIModelConfig>>([]);
-
+    const aiModels = ref<Array<AIModelConfig & { id: string }>>([]);
     return {
         themeMode,
         language,

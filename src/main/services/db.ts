@@ -63,7 +63,7 @@ class DatabaseService extends BaseService {
     }
 
     public getDatabaseDir() {
-        return path.join(app.getPath("appData"), "databases");
+        return path.join(app.getPath("userData"), "databases");
     }
 
     public init() {

@@ -1,4 +1,4 @@
-import { app } from "electron";
+import { app, webContents } from "electron";
 import {
     appService,
     clipboardService,
@@ -33,6 +33,8 @@ const main = () => {
     });
     initAllServices();
     windowService.createMainWindow();
+
+    
 };
 
 app.whenReady().then(() => {

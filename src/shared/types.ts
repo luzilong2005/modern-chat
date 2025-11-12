@@ -41,6 +41,7 @@ export type IpcEvents = {
     "dialog:error": (title: string, content: string) => void;
     "dialog:openable": (options: electron.OpenDialogOptions) => electron.OpenDialogReturnValue;
     "dialog:saveable": (options: electron.SaveDialogOptions) => electron.SaveDialogReturnValue;
+    "dialog:create": (options: { name: string; route: `/${string}`; width?: number; height?: number }) => void;
 
     "file:read-file": (path: string) => string;
     "file:write-file": (path: string, content: string) => void;
@@ -51,9 +52,8 @@ export type IpcRendererEvents = {
 };
 
 export interface AIModelConfig {
-    id: number;
-    name: string;
-    modelCode: string;
+    displayName: string;
+    model: string;
     baseURL: string;
     apiKey: string;
 }

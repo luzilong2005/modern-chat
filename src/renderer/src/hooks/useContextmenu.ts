@@ -4,11 +4,11 @@ import { CONTEXTMENU_CODE } from "@shared";
 
 const { t } = i18n.global;
 const contextmenuTemplate = {
-    [CONTEXTMENU_CODE.COPY]: t("ui.contextmenu.copy"),
-    [CONTEXTMENU_CODE.DELETE]: t("ui.contextmenu.delete"),
-    [CONTEXTMENU_CODE.RENAME]: t("ui.contextmenu.rename"),
-    [CONTEXTMENU_CODE.REFRESH]: t("ui.contextmenu.refresh"),
-    [CONTEXTMENU_CODE.TOP]: t("ui.contextmenu.top"),
+    [CONTEXTMENU_CODE.COPY]: t("app.contextmenu.copy"),
+    [CONTEXTMENU_CODE.DELETE]: t("app.contextmenu.delete"),
+    [CONTEXTMENU_CODE.RENAME]: t("app.contextmenu.rename"),
+    [CONTEXTMENU_CODE.REFRESH]: t("app.contextmenu.refresh"),
+    [CONTEXTMENU_CODE.TOP]: t("app.contextmenu.top"),
 } satisfies Record<CONTEXTMENU_CODE, string>;
 
 export const useContextmenu = () => {

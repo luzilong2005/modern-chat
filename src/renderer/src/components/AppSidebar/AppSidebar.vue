@@ -5,25 +5,25 @@
             <AppSidebarButton
                 :icon="BotIcon"
                 :active="route.name === ROUTE_NAME.CHAT"
-                :tooltip="t('ui.sidebar.chat')"
+                :tooltip="t('app.sidebar.chat')"
                 @click="handleToChatPage"
             />
             <AppSidebarButton
                 :icon="HistoryIcon"
                 :active="route.name === ROUTE_NAME.HISTORY"
-                :tooltip="t('ui.sidebar.history')"
+                :tooltip="t('app.sidebar.history')"
                 @click="handleToHistoryPage"
             />
         </nav>
         <footer class="mt-auto mb-3 flex flex-col items-center space-y-2.5">
             <AppSidebarButton
                 :icon="InfoIcon"
-                :tooltip="t('ui.sidebar.about')"
+                :tooltip="t('app.sidebar.about')"
                 @click="handleOpenAboutWindow"
             />
             <AppSidebarButton
                 :icon="SettingsIcon"
-                :tooltip="t('ui.sidebar.settings')"
+                :tooltip="t('app.sidebar.settings')"
                 @click="handleOpenSettingsWindow"
             />
         </footer>

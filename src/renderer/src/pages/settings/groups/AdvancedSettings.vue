@@ -1,8 +1,8 @@
 <template>
-    <SettingsGroup title="高级">
-        <SettingsGroupItem title="托盘">
+    <SettingsGroup :title="t('pages.settings.advanced.title')">
+        <SettingsGroupItem :title="t('pages.settings.advanced.tray')">
             <NCheckbox
-                label="启动托盘"
+                :label="t('pages.settings.advanced.enableTray')"
                 size="large"
                 :checked="settings.trayEnabled"
                 @update-checked="(v) => settings.$patch({ trayEnabled: v })"
@@ -44,25 +44,26 @@
                     style="max-height: 200px"
                 >
                     <div class="px-4">
-                        <template
-                            v-for="item in settings.aiModels"
-                            :key="item.id"
-                        >
-                            <div class="flex items-center justify-between space-y-2.5">
-                                <p class="text-mc-text-primary truncate select-none">{{ item.name }}</p>
+                        <template v-for="item in settings.aiModels">
+                            <div
+                                class="border-mc-border flex items-center justify-between space-y-2.5 rounded-lg border"
+                            >
+                                <p class="text-mc-text-primary truncate select-none">
+                                    {{ `${item.displayName} - ${item.model}` }}
+                                </p>
                                 <div class="flex gap-x-2.5">
                                     <NButton
                                         size="small"
                                         type="success"
                                         ghost
-                                        @click="handleEditModel(item)"
+                                        @click="handleEditModel(item.id)"
                                         >{{ t("pages.settings.advanced.button.edit") }}</NButton
                                     >
                                     <NButton
                                         size="small"
                                         type="error"
                                         ghost
-                                        @click="handleDeleteModel(item)"
+                                        @click="handleDeleteModel(item.id)"
                                         >{{ t("pages.settings.advanced.button.delete") }}</NButton
                                     >
                                 </div>
@@ -85,7 +86,6 @@ import { NCheckbox, NButton, NButtonGroup, NDivider, NInput, NScrollbar, NEmpty 
 import { toValue } from "vue";
 import { useI18n } from "vue-i18n";
 import { SearchIcon } from "lucide-vue-next";
-import { AIModelConfig } from "@shared";
 
 const settings = useSettingsStore();
 const { t } = useI18n<{ message: I18nMessageSchema }>();
@@ -130,9 +130,35 @@ const handleCleanupLogs = () => {
     ipc.invoke("log:cleanup");
 };
 
-const handleAddModel = () => {};
+const handleAddModel = () => {
+    ipc.invoke("dialog:create", {
+        name: "addModel",
+        route: "/add-model",
+        width: 400,
+        height: 380,
+    });
+};
 
-const handleEditModel = (model: AIModelConfig) => {};
+const handleEditModel = (id: string) => {
+    ipc.invoke("dialog:create", {
+        name: "editModel",
+        route: `/edit-model?id=${id}`,
+        width: 400,
+        height: 380,
+    });
+};
 
-const handleDeleteModel = (model: AIModelConfig) => {};
+const handleDeleteModel = (id: string) => {
+    ipc.invoke("dialog:message", {
+        type: "warning",
+        title: t("pages.settings.advanced.dialog.delete-model.title"),
+        message: t("pages.settings.advanced.dialog.delete-model.content"),
+        buttons: [
+            t("pages.settings.advanced.dialog.delete-model.button.ok"),
+            t("pages.settings.advanced.dialog.delete-model.button.cancel"),
+        ],
+    }).then(({ response }) => {
+        if (response === 0) settings.aiModels.splice(settings.aiModels.findIndex((item) => item.id === id));
+    });
+};
 </script>

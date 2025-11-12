@@ -36,6 +36,14 @@ const router = createRouter({
             name: ROUTE_NAME.SETTINGS,
             component: () => import("@renderer/pages/settings"),
         },
+        {
+            path: "/add-model",
+            component: () => import("@renderer/pages/settings/dialogs/AddModelDialog.vue"),
+        },
+        {
+            path: "/edit-model",
+            component: () => import("@renderer/pages/settings/dialogs/EditModelDialog.vue"),
+        },
     ],
 });
 

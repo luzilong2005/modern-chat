@@ -7,13 +7,11 @@
         <div class="flex h-10 items-center">
             <ModelSelector />
             <span class="flex-auto"></span>
-            <NButton
-                circle
-                disabled
-            >
+            <NButton disabled>
                 <template #icon>
                     <SendHorizontalIcon />
                 </template>
+                <p>发送</p>
             </NButton>
         </div>
     </div>

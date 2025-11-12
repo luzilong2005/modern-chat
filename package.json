@@ -24,7 +24,7 @@
         "icon:build": "electron-icon-builder --input=./resources/icon.png --output=./resources/build --flatten",
         "install-electron": "node ./node_modules/electron/install",
         "start": "electron-vite dev",
-        "rebuild-all":"electron rebuild -f -w better-sqlite3"
+        "rebuild-all": "electron rebuild -f -w better-sqlite3"
     },
     "dependencies": {
         "@electron-toolkit/preload": "^3.0.2",
@@ -34,8 +34,10 @@
         "dayjs": "^1.11.19",
         "electron-log": "^5.4.3",
         "electron-util": "^1.0.0",
+        "es-toolkit": "^1.41.0",
         "lucide-vue-next": "^0.553.0",
         "naive-ui": "^2.43.1",
+        "nanoid": "^5.1.6",
         "openai": "^6.8.1",
         "pinia": "^3.0.4",
         "pinia-plugin-persistedstate": "^4.7.1",

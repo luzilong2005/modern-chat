@@ -1,6 +1,7 @@
 <template>
-    <span class="w-[100px]">
+    <span class="w-[200px]">
         <NSelect
+            v-model:value="currentModel"
             :options="options"
             placeholder="选择模型"
         >
@@ -10,11 +11,13 @@
 </template>
 
 <script setup lang="ts">
+import { useSettingsStore } from "@renderer/stores";
 import { NSelect } from "naive-ui";
-import { reactive } from "vue";
+import { computed, shallowRef } from "vue";
 
-const options = reactive([
-    { label: "模型1", value: "model1" },
-    { label: "模型2", value: "model2" },
-]);
+const settings = useSettingsStore();
+const options = computed(() => {
+    return settings.aiModels.map(({ displayName, model }) => ({ label: displayName, value: model }));
+});
+const currentModel = shallowRef(settings.aiModels.at(0)?.model);
 </script>

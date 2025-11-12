@@ -57,7 +57,7 @@ class LogService extends BaseService {
      * Windows: C:\Users\{username}\AppData\Roaming\modern-chat\logs
      */
     public getLogDir() {
-        return path.join(app.getPath("appData"), "logs");
+        return path.join(app.getPath("userData"), "logs");
     }
 
     public async cleanupOldLogs() {

@@ -10,7 +10,6 @@ class AppService extends BaseService {
     }
 
     private setupIpcEvents() {
-        console.log("setupIpcEvents")
         ipc.handle("app:quit", () => this.quit());
         ipc.handle("app:relaunch", () => this.relaunch());
         ipc.handle("app:open-path", (_, path) => this.openPath(path));

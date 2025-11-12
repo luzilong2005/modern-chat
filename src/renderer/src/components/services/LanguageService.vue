@@ -1,3 +1,4 @@
+<template></template>
 <script setup lang="ts">
 import { useSettingsStore } from "@renderer/stores";
 import { watchEffect } from "vue";
