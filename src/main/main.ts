@@ -8,7 +8,7 @@ import {
     trayService,
     versionService,
     windowService,
-    fileService
+    fileService,
 } from "./services";
 
 const initAllServices = () => {
@@ -21,6 +21,7 @@ const initAllServices = () => {
     dialogService.init();
     clipboardService.init();
     fileService.init();
+    //databaseService.init();
 };
 
 const main = () => {

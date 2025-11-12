@@ -49,3 +49,33 @@ export type IpcEvents = {
 export type IpcRendererEvents = {
     "tray:clicked": [code: TRAY_CONTEXTMENU_CODE];
 };
+
+export interface AIModelConfig {
+    id: number;
+    name: string;
+    modelCode: string;
+    baseURL: string;
+    apiKey: string;
+}
+
+export interface ConversationData {
+    id: string;
+    title: string;
+    createdDate: Date;
+    updatedDate: Date;
+}
+
+export interface MessageData {
+    conversationId: string;
+    id: string;
+    content: string;
+    createdDate: Date;
+    updatedDate: Date;
+    sender: "user" | "bot";
+}
+
+export interface UserMessageData extends MessageData {}
+
+export interface BotMessageData extends MessageData {
+    modelName: string;
+}

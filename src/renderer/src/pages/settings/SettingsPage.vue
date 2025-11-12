@@ -1,7 +1,7 @@
 <template>
     <div :class="['flex h-screen w-screen flex-col', 'bg-mc-background']">
         <AppTitleBar :title="t('window.settings')" />
-        <NScrollbar class="max-h-[calc(100%-40px)] p-4">
+        <NScrollbar class="px-4 pb-4">
             <AppearanceSettings />
             <AdvancedSettings />
         </NScrollbar>

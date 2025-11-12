@@ -5,7 +5,6 @@ import { useSettingsStore } from "@renderer/stores";
 import { TRAY_CONTEXTMENU_CODE, WINDOW_NAME } from "@shared";
 import { watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
-
 const settings = useSettingsStore();
 const openTray = async () => {
     const { t } = useI18n<{ message: I18nMessageSchema }>();
@@ -33,6 +32,4 @@ watchEffect(() => {
     if (settings.trayEnabled) openTray();
     else closeTray();
 });
-
-console.log(0);
 </script>

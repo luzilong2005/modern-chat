@@ -7,3 +7,4 @@ export { versionService } from "./version";
 export { clipboardService } from "./clipboard";
 export { dialogService } from "./dialog";
 export { fileService } from "./file";
+export * from "./db";

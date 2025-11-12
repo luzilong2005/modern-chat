@@ -3,6 +3,8 @@
 *lock*
 LICENSE
 README*
-**/dist
 release
+**/dist
+**/build
+**/out
 **/node_modules

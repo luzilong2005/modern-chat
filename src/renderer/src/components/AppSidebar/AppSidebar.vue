@@ -39,11 +39,15 @@ import { useRoute, useRouter } from "vue-router";
 import { ROUTE_NAME } from "@renderer/enums";
 import { ipc } from "@renderer/apis";
 import { WINDOW_NAME } from "@shared";
+import { useGlobalsStore } from "@renderer/stores";
 const { t } = useI18n<{ message: I18nMessageSchema }>();
 const route = useRoute();
 const router = useRouter();
-
-const handleToChatPage = () => router.push({ name: ROUTE_NAME.CHAT });
+const globals = useGlobalsStore();
+const handleToChatPage = () => {
+    router.push({ name: ROUTE_NAME.CHAT });
+    if (route.name === ROUTE_NAME.CHAT) globals.toggleConversationExpanded();
+};
 const handleToHistoryPage = () => router.push({ name: ROUTE_NAME.HISTORY });
 const handleOpenAboutWindow = () => ipc.invoke("window:open", WINDOW_NAME.ABOUT, "/about");
 const handleOpenSettingsWindow = () => ipc.invoke("window:open", WINDOW_NAME.SETTINGS, "/settings");

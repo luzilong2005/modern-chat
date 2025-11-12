@@ -1,5 +1,6 @@
 <template>
     <NSplit
+        v-if="globals.conversationExpanded"
         min="300px"
         max="340px"
         default-size="340px"
@@ -14,10 +15,14 @@
             <div class="hover:border-mc-primary border-mc-border h-full border-r hover:border-2"></div>
         </template>
     </NSplit>
+    <MessageView v-else />
 </template>
 
 <script setup lang="ts">
 import { NSplit } from "naive-ui";
 import ConversationView from "./conversation/ConversationView.vue";
 import MessageView from "./message/MessageView.vue";
+import { useGlobalsStore } from "@renderer/stores";
+
+const globals = useGlobalsStore();
 </script>

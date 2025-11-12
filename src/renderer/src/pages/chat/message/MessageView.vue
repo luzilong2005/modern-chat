@@ -1,5 +1,5 @@
 <template>
-    <div class="h-hull flex flex-col">
+    <div class="h-hull flex flex-col w-full">
         <AppTitleBar />
         <NScrollbar style="height: calc(100vh - 240px - 40px)">
             <div>

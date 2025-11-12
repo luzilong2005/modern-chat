@@ -23,17 +23,20 @@
         "format": "prettier --write .",
         "icon:build": "electron-icon-builder --input=./resources/icon.png --output=./resources/build --flatten",
         "install-electron": "node ./node_modules/electron/install",
-        "start": "electron-vite dev"
+        "start": "electron-vite dev",
+        "rebuild-all":"electron rebuild -f -w better-sqlite3"
     },
     "dependencies": {
         "@electron-toolkit/preload": "^3.0.2",
         "@electron-toolkit/typed-ipc": "^1.0.2",
         "@vueuse/core": "^14.0.0",
+        "better-sqlite3": "^12.4.1",
         "dayjs": "^1.11.19",
         "electron-log": "^5.4.3",
         "electron-util": "^1.0.0",
         "lucide-vue-next": "^0.553.0",
         "naive-ui": "^2.43.1",
+        "openai": "^6.8.1",
         "pinia": "^3.0.4",
         "pinia-plugin-persistedstate": "^4.7.1",
         "tailwind-merge": "^3.4.0",
@@ -43,7 +46,10 @@
     },
     "devDependencies": {
         "@electron-toolkit/tsconfig": "^2.0.0",
+        "@electron/rebuild": "^4.0.1",
+        "@faker-js/faker": "^10.1.0",
         "@tailwindcss/vite": "^4.1.17",
+        "@types/better-sqlite3": "^7.6.13",
         "@types/node": "^24.10.0",
         "@vitejs/plugin-vue": "^6.0.1",
         "electron": "^39.1.1",

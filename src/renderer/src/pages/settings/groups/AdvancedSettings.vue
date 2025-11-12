@@ -22,6 +22,56 @@
                 <NButton @click="handleCleanupLogs">{{ t("pages.settings.advanced.cleanupLogs") }}</NButton>
             </NButtonGroup>
         </SettingsGroupItem>
+        <NDivider />
+        <SettingsGroupItem :title="t('pages.settings.advanced.aiModel')">
+            <span class="space-y-6">
+                <div class="flex items-center justify-between space-x-2.5">
+                    <NInput
+                        clearable
+                        :placeholder="t('pages.settings.advanced.search')"
+                    >
+                        <template #prefix>
+                            <SearchIcon class="size-5" />
+                        </template>
+                    </NInput>
+                    <NButton @click="handleAddModel">{{ t("pages.settings.advanced.button.add") }}</NButton>
+                </div>
+                <NEmpty v-if="settings.aiModels.length < 1">
+                    <p>添加一个模型吧</p>
+                </NEmpty>
+                <NScrollbar
+                    v-else
+                    style="max-height: 200px"
+                >
+                    <div class="px-4">
+                        <template
+                            v-for="item in settings.aiModels"
+                            :key="item.id"
+                        >
+                            <div class="flex items-center justify-between space-y-2.5">
+                                <p class="text-mc-text-primary truncate select-none">{{ item.name }}</p>
+                                <div class="flex gap-x-2.5">
+                                    <NButton
+                                        size="small"
+                                        type="success"
+                                        ghost
+                                        @click="handleEditModel(item)"
+                                        >{{ t("pages.settings.advanced.button.edit") }}</NButton
+                                    >
+                                    <NButton
+                                        size="small"
+                                        type="error"
+                                        ghost
+                                        @click="handleDeleteModel(item)"
+                                        >{{ t("pages.settings.advanced.button.delete") }}</NButton
+                                    >
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </NScrollbar>
+            </span>
+        </SettingsGroupItem>
     </SettingsGroup>
 </template>
 
@@ -31,9 +81,11 @@ import SettingsGroup from "../SettingsGroup.vue";
 import SettingsGroupItem from "../SettingsGroupItem.vue";
 import { I18nMessageSchema } from "@renderer/i18n";
 import { useSettingsStore } from "@renderer/stores";
-import { NCheckbox, NButton, NButtonGroup, NDivider } from "naive-ui";
+import { NCheckbox, NButton, NButtonGroup, NDivider, NInput, NScrollbar, NEmpty } from "naive-ui";
 import { toValue } from "vue";
 import { useI18n } from "vue-i18n";
+import { SearchIcon } from "lucide-vue-next";
+import { AIModelConfig } from "@shared";
 
 const settings = useSettingsStore();
 const { t } = useI18n<{ message: I18nMessageSchema }>();
@@ -77,4 +129,10 @@ const handleOpenLogDir = async () => {
 const handleCleanupLogs = () => {
     ipc.invoke("log:cleanup");
 };
+
+const handleAddModel = () => {};
+
+const handleEditModel = (model: AIModelConfig) => {};
+
+const handleDeleteModel = (model: AIModelConfig) => {};
 </script>

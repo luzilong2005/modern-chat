@@ -15,6 +15,10 @@
             "history": "历史记录",
             "about": "关于",
             "settings": "设置"
+        },
+        "contextmenu": {
+            "copy": "复制",
+            "delete": "删除"
         }
     },
     "pages": {
@@ -45,8 +49,15 @@
                 "exportSettings": "导出设置",
                 "importSettings": "导入设置",
                 "openLogDir": "打开日志目录",
-                "cleanupLogs": "清理日志"
+                "cleanupLogs": "清理日志",
+                "aiModel": "AI模型",
+                "search": "搜索",
+                "button": { "add": "添加", "edit": "编辑", "delete": "删除" }
             }
+        },
+        "history": {
+            "title": "历史会话",
+            "search": "搜索"
         }
     },
     "window": {

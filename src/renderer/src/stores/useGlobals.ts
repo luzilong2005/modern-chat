@@ -1,13 +1,15 @@
-import { useDark } from "@vueuse/core";
+import { useDark, useToggle } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { shallowRef } from "vue";
 
 const setup = () => {
     const conversationExpanded = shallowRef(false);
     const isDark = useDark();
+    const toggleConversationExpanded = useToggle(conversationExpanded);
     return {
         isDark,
         conversationExpanded,
+        toggleConversationExpanded,
     };
 };
 
