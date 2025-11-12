@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import AdvancedSettings from "./groups/AdvancedSettings.vue";
 import AppearanceSettings from "./groups/AppearanceSettings.vue";
-import {AppTitleBar} from "@renderer/components/AppTitleBar";
+import { AppTitleBar } from "@renderer/components/AppTitleBar";
 import { type I18nMessageSchema } from "@renderer/i18n";
 import { NScrollbar } from "naive-ui";
 import { useI18n } from "vue-i18n";

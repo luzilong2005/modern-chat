@@ -4,7 +4,10 @@
         :tooltip="props.tooltip"
         :class="twMerge('text-mc-text-primary size-6', props.class)"
     >
-        <component :is="props.icon" class="size-5"/>
+        <component
+            class="size-5"
+            :is="props.icon"
+        />
     </IconButton>
 </template>
 

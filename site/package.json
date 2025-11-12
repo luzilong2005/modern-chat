@@ -1,0 +1,12 @@
+{
+    "name": "@modern-ui/site",
+    "private": true,
+    "scripts": {
+        "build": "vitepress build",
+        "dev": "vitepress dev",
+        "preview": "vitepress preview"
+    },
+    "devDependencies": {
+        "vitepress": "2.0.0-alpha.12"
+    }
+}

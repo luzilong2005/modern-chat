@@ -33,8 +33,6 @@ const main = () => {
     });
     initAllServices();
     windowService.createMainWindow();
-
-    
 };
 
 app.whenReady().then(() => {

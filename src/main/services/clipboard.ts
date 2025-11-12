@@ -11,7 +11,7 @@ class ClipboardService extends BaseService {
 
     private setupIpcEvents() {
         ipc.handle("clipboard:write", (_, ...args) => clipboard.write(...args));
-        ipc.handle("clipboard:write-text",(_, text) => clipboard.writeText(text));
+        ipc.handle("clipboard:write-text", (_, text) => clipboard.writeText(text));
     }
 
     public static getInstance() {
