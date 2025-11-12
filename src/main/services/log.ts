@@ -110,21 +110,26 @@ class LogService extends BaseService {
         return { deletedCount, errorFiles };
     }
 
-    public info(...messages: string[]) {
+    public info(...messages: any[]) {
         logger.info(...messages);
     }
 
-    public error(...messages: string[]) {
+    public error(...messages: any[]) {
         logger.error(...messages);
     }
 
-    public warn(...messages: string[]) {
+    public warn(...messages: any[]) {
         logger.warn(...messages);
     }
 
-    public debug(...messages: string[]) {
+    public debug(...messages: any[]) {
         logger.debug(...messages);
     }
 }
 
 export const logService = LogService.getInstance();
+
+export const LOG_INFO = (...messages: any[]) => logService.info(...messages);
+export const LOG_ERROR = (...messages: any[]) => logService.error(...messages);
+export const LOG_WARN = (...messages: any[]) => logService.warn(...messages);
+export const LOG_DEBUG = (...messages: any[]) => logService.debug(...messages);

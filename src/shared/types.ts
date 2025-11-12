@@ -9,10 +9,10 @@ export type IpcEvents = {
     "clipboard:write": (...args: Parameters<electron.Clipboard["write"]>) => void;
     "clipboard:write-text": (content: string) => void;
 
-    "log:info": (messages: string) => void;
-    "log:error": (messages: string) => void;
-    "log:warn": (messages: string) => void;
-    "log:debug": (messages: string) => void;
+    "log:info": ( ...messages: string[]) => void;
+    "log:error": (...messages: string[]) => void;
+    "log:warn": ( ...messages: string[]) => void;
+    "log:debug": (...messages: string[]) => void;
     "log:get-dir": () => string;
     "log:cleanup": () => void;
 

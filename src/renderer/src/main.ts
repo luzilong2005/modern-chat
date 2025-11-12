@@ -5,10 +5,15 @@ import "./styles/index.css";
 import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import { createApp } from "vue";
+import { setupVueGlobalErrorHandler, setupWindowGlobalErrorHandler } from "./utils/handler";
 
 const pinia = createPinia();
 pinia.use(createPersistedState());
+
 const app = createApp(App);
+setupVueGlobalErrorHandler(app);
+setupWindowGlobalErrorHandler();
+
 app.use(pinia);
 app.use(router);
 app.use(i18n);
