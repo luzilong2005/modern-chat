@@ -31,7 +31,8 @@
     "pages": {
         "chat": {
             "search": "搜索",
-            "addNewConversation": "添加新建对话"
+            "addNewConversation": "添加新建对话",
+            "selectModel": "选择模型"
         },
         "about": {
             "github": "GitHub",
@@ -50,14 +51,15 @@
             },
             "advanced": {
                 "title": "高级",
-                "tray": "系统托盘",
+                "tray": "托盘",
+                "enableTray": "启用托盘",
                 "configuration": "配置",
                 "log": "日志",
                 "exportSettings": "导出设置",
                 "importSettings": "导入设置",
                 "openLogDir": "打开日志目录",
                 "cleanupLogs": "清理日志",
-                "aiModel": "AI模型",
+                "modelConfig": "模型配置",
                 "search": "搜索",
                 "button": { "add": "添加", "edit": "编辑", "delete": "删除" },
                 "dialog": {
@@ -72,7 +74,6 @@
                     "add-model": {
                         "title": "添加模型",
                         "form": {
-                            "displayName": "显示的名称",
                             "model": "模型",
                             "apiKey": "API密钥",
                             "baseURL": "URL地址",
@@ -86,7 +87,6 @@
                     "edit-model": {
                         "title": "编辑模型",
                         "form": {
-                            "displayName": "显示的名称",
                             "model": "模型",
                             "apiKey": "API密钥",
                             "baseURL": "URL地址",

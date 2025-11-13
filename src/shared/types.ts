@@ -9,9 +9,9 @@ export type IpcEvents = {
     "clipboard:write": (...args: Parameters<electron.Clipboard["write"]>) => void;
     "clipboard:write-text": (content: string) => void;
 
-    "log:info": ( ...messages: string[]) => void;
+    "log:info": (...messages: string[]) => void;
     "log:error": (...messages: string[]) => void;
-    "log:warn": ( ...messages: string[]) => void;
+    "log:warn": (...messages: string[]) => void;
     "log:debug": (...messages: string[]) => void;
     "log:get-dir": () => string;
     "log:cleanup": () => void;
@@ -45,6 +45,8 @@ export type IpcEvents = {
 
     "file:read-file": (path: string) => string;
     "file:write-file": (path: string, content: string) => void;
+
+    "openai:change-model": (config: { baseURL: string; apiKey: string; model: string }) => void;
 };
 
 export type IpcRendererEvents = {
@@ -52,7 +54,6 @@ export type IpcRendererEvents = {
 };
 
 export interface AIModelConfig {
-    displayName: string;
     model: string;
     baseURL: string;
     apiKey: string;
@@ -71,7 +72,7 @@ export interface MessageData {
     content: string;
     createdDate: Date;
     updatedDate: Date;
-    sender: "user" | "bot";
+    role: "user" | "assistant";
 }
 
 export interface UserMessageData extends MessageData {}

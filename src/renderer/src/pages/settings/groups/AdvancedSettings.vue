@@ -23,7 +23,7 @@
             </NButtonGroup>
         </SettingsGroupItem>
         <NDivider />
-        <SettingsGroupItem :title="t('pages.settings.advanced.aiModel')">
+        <SettingsGroupItem :title="t('pages.settings.advanced.modelConfig')">
             <span class="space-y-6">
                 <div class="flex items-center justify-between space-x-2.5">
                     <NInput
@@ -36,34 +36,32 @@
                     </NInput>
                     <NButton @click="handleAddModel">{{ t("pages.settings.advanced.button.add") }}</NButton>
                 </div>
-                <NEmpty v-if="settings.aiModels.length < 1">
-                    <p>添加一个模型吧</p>
-                </NEmpty>
+                <NEmpty v-if="settings.modelConfigs.length < 1" />
                 <NScrollbar
                     v-else
                     style="max-height: 200px"
                 >
                     <div class="px-4">
-                        <template v-for="item in settings.aiModels">
+                        <template v-for="item in settings.modelConfigs">
                             <div
                                 class="border-mc-border flex items-center justify-between space-y-2.5 rounded-lg border"
                             >
                                 <p class="text-mc-text-primary truncate select-none">
-                                    {{ `${item.displayName} - ${item.model}` }}
+                                    {{ item.model }}
                                 </p>
                                 <div class="flex gap-x-2.5">
                                     <NButton
                                         size="small"
                                         type="success"
                                         ghost
-                                        @click="handleEditModel(item.id)"
+                                        @click="handleEditModel(item.model)"
                                         >{{ t("pages.settings.advanced.button.edit") }}</NButton
                                     >
                                     <NButton
                                         size="small"
                                         type="error"
                                         ghost
-                                        @click="handleDeleteModel(item.id)"
+                                        @click="handleDeleteModel(item.model)"
                                         >{{ t("pages.settings.advanced.button.delete") }}</NButton
                                     >
                                 </div>
@@ -139,16 +137,16 @@ const handleAddModel = () => {
     });
 };
 
-const handleEditModel = (id: string) => {
+const handleEditModel = (model: string) => {
     ipc.invoke("dialog:create", {
         name: "editModel",
-        route: `/edit-model?id=${id}`,
+        route: `/edit-model?model=${model}`,
         width: 400,
         height: 380,
     });
 };
 
-const handleDeleteModel = (id: string) => {
+const handleDeleteModel = (model: string) => {
     ipc.invoke("dialog:message", {
         type: "warning",
         title: t("pages.settings.advanced.dialog.delete-model.title"),
@@ -158,7 +156,8 @@ const handleDeleteModel = (id: string) => {
             t("pages.settings.advanced.dialog.delete-model.button.cancel"),
         ],
     }).then(({ response }) => {
-        if (response === 0) settings.aiModels.splice(settings.aiModels.findIndex((item) => item.id === id));
+        if (response === 0)
+            settings.modelConfigs.splice(settings.modelConfigs.findIndex((item) => item.model === model));
     });
 };
 </script>

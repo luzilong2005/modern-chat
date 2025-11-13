@@ -14,15 +14,6 @@
                 label-width="auto"
             >
                 <NFormItem
-                    :label="t('pages.settings.advanced.dialog.add-model.form.displayName')"
-                    path="displayName"
-                >
-                    <NInput
-                        v-model:value="data.displayName"
-                        placeholder=""
-                    ></NInput>
-                </NFormItem>
-                <NFormItem
                     :label="t('pages.settings.advanced.dialog.add-model.form.model')"
                     path="model"
                 >
@@ -70,7 +61,6 @@ import { useSettingsStore } from "@renderer/stores";
 import { AIModelConfig } from "@shared";
 import { FormInst, FormItemRule, NButton, NForm, NFormItem, NInput } from "naive-ui";
 import { reactive, ref } from "vue";
-import { nanoid } from "nanoid";
 import { useI18n } from "vue-i18n";
 import { I18nMessageSchema } from "@renderer/i18n";
 interface FormData extends AIModelConfig {}
@@ -78,9 +68,8 @@ interface FormData extends AIModelConfig {}
 const { t } = useI18n<{ message: I18nMessageSchema }>();
 const settings = useSettingsStore();
 const form = ref<FormInst | null>(null);
-const data = reactive<FormData>({ displayName: "", model: "", baseURL: "", apiKey: "" });
+const data = reactive<FormData>({ model: "", baseURL: "", apiKey: "" });
 const rules: Record<keyof FormData, FormItemRule[]> = {
-    displayName: [{ required: true, message: t("pages.settings.advanced.dialog.add-model.form.required") }],
     model: [{ required: true, message: t("pages.settings.advanced.dialog.add-model.form.required") }],
     baseURL: [{ required: true, message: t("pages.settings.advanced.dialog.add-model.form.required") }],
     apiKey: [{ required: true, message: t("pages.settings.advanced.dialog.add-model.form.required") }],
@@ -91,11 +80,11 @@ const handleSubmit = () => {
         if (errors) {
             return;
         }
-        if (settings.aiModels.some((item) => item.model === data.model)) {
+        if (settings.modelConfigs.some((item) => item.model === data.model)) {
             ipc.invoke("dialog:error", "error", "已有该模型");
             return;
         }
-        settings.aiModels.push({ ...data, id: nanoid() });
+        settings.modelConfigs.push({ ...data });
         ipc.invoke("window:close");
     });
 };

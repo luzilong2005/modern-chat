@@ -14,15 +14,6 @@
                 label-width="auto"
             >
                 <NFormItem
-                    :label="t('pages.settings.advanced.dialog.edit-model.form.displayName')"
-                    path="displayName"
-                >
-                    <NInput
-                        v-model:value="data.displayName"
-                        placeholder=""
-                    ></NInput>
-                </NFormItem>
-                <NFormItem
                     :label="t('pages.settings.advanced.dialog.edit-model.form.model')"
                     path="model"
                 >
@@ -80,9 +71,8 @@ const { t } = useI18n<{ message: I18nMessageSchema }>();
 const route = useRoute();
 const settings = useSettingsStore();
 const form = ref<FormInst | null>(null);
-const data = reactive<FormData>({ displayName: "", model: "", baseURL: "", apiKey: "" });
+const data = reactive<FormData>({ model: "", baseURL: "", apiKey: "" });
 const rules: Record<keyof FormData, FormItemRule[]> = {
-    displayName: [{ required: true, message: "必填" }],
     model: [{ required: true, message: "必填" }],
     baseURL: [{ required: true, message: "必填" }],
     apiKey: [{ required: true, message: "必填" }],
@@ -93,15 +83,14 @@ const handleSubmit = () => {
         if (errors) {
             return;
         }
-        settings.aiModels.push({ ...data, id: route.query.id as string });
+        settings.modelConfigs.push({ ...data });
         ipc.invoke("window:close");
     });
 };
 
 onMounted(() => {
-    const config = settings.aiModels.find((item) => item.id === route.query.id);
+    const config = settings.modelConfigs.find((item) => item.model === route.query.model);
     if (config) {
-        data.displayName = config.displayName;
         data.model = config.model;
         data.baseURL = config.baseURL;
         data.apiKey = config.apiKey;
