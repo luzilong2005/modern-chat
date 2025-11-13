@@ -10,6 +10,5 @@ export async function openaiDemo() {
         messages: [{ role: "user", content: "静夜思" }],
     });
     for await (const chunk of stream) {
-        console.log(chunk);
     }
 }

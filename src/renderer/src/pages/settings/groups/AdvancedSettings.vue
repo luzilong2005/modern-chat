@@ -34,6 +34,9 @@
                             <SearchIcon class="size-5" />
                         </template>
                     </NInput>
+                    <NButton @click="() => settings.$patch({ modelConfigs: [...settings.modelConfigs] })">
+                        刷新
+                    </NButton>
                     <NButton @click="handleAddModel">{{ t("pages.settings.advanced.button.add") }}</NButton>
                 </div>
                 <NEmpty v-if="settings.modelConfigs.length < 1" />
@@ -81,7 +84,7 @@ import SettingsGroupItem from "../SettingsGroupItem.vue";
 import { I18nMessageSchema } from "@renderer/i18n";
 import { useSettingsStore } from "@renderer/stores";
 import { NCheckbox, NButton, NButtonGroup, NDivider, NInput, NScrollbar, NEmpty } from "naive-ui";
-import { toValue } from "vue";
+import { toRaw } from "vue";
 import { useI18n } from "vue-i18n";
 import { SearchIcon } from "lucide-vue-next";
 
@@ -89,7 +92,7 @@ const settings = useSettingsStore();
 const { t } = useI18n<{ message: I18nMessageSchema }>();
 
 const settingsToJSON = () => {
-    return JSON.stringify(toValue(settings.$state), null, 4);
+    return JSON.stringify(toRaw(settings.$state), null, 4);
 };
 
 const settingsFromJSON = (json: string) => {
@@ -130,19 +133,30 @@ const handleCleanupLogs = () => {
 
 const handleAddModel = () => {
     ipc.invoke("dialog:create", {
-        name: "addModel",
+        name: "add-model-dialog",
         route: "/add-model",
         width: 400,
         height: 380,
+    });
+    ipc.once("dialog:closed", (_, name, data) => {
+        if (name === "add-model-dialog") settings.modelConfigs.push(data);
     });
 };
 
 const handleEditModel = (model: string) => {
     ipc.invoke("dialog:create", {
-        name: "editModel",
+        name: "edit-model-dialog",
         route: `/edit-model?model=${model}`,
         width: 400,
         height: 380,
+    });
+    ipc.once("dialog:closed", (_, name, data) => {
+        if (name === "edit-model-dialog")
+            settings.modelConfigs.splice(
+                settings.modelConfigs.findIndex((item) => item.model === model),
+                1,
+                data,
+            );
     });
 };
 

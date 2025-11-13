@@ -60,7 +60,7 @@ import { AppTitleBar } from "@renderer/components/AppTitleBar";
 import { useSettingsStore } from "@renderer/stores";
 import { AIModelConfig } from "@shared";
 import { FormInst, FormItemRule, NButton, NForm, NFormItem, NInput } from "naive-ui";
-import { reactive, ref } from "vue";
+import { reactive, ref, toRaw } from "vue";
 import { useI18n } from "vue-i18n";
 import { I18nMessageSchema } from "@renderer/i18n";
 interface FormData extends AIModelConfig {}
@@ -76,16 +76,17 @@ const rules: Record<keyof FormData, FormItemRule[]> = {
 };
 
 const handleSubmit = () => {
-    form.value?.validate((errors) => {
-        if (errors) {
-            return;
-        }
-        if (settings.modelConfigs.some((item) => item.model === data.model)) {
-            ipc.invoke("dialog:error", "error", "已有该模型");
-            return;
-        }
-        settings.modelConfigs.push({ ...data });
-        ipc.invoke("window:close");
-    });
+    try {
+        form.value?.validate((errors) => {
+            if (errors) {
+                return;
+            }
+            if (settings.modelConfigs.some((item) => item.model === data.model)) {
+                ipc.invoke("dialog:error", "error", "已有该模型");
+                return;
+            }
+            ipc.invoke("dialog:close", { name: "add-model-dialog", data: toRaw(data) });
+        });
+    } catch (error) {}
 };
 </script>

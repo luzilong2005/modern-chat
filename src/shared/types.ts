@@ -41,8 +41,8 @@ export type IpcEvents = {
     "dialog:error": (title: string, content: string) => void;
     "dialog:openable": (options: electron.OpenDialogOptions) => electron.OpenDialogReturnValue;
     "dialog:saveable": (options: electron.SaveDialogOptions) => electron.SaveDialogReturnValue;
-    "dialog:create": (options: { name: string; route: `/${string}`; width?: number; height?: number }) => void;
-
+    "dialog:create": (options: { name: string; route: `/${string}`; width?: number; height?: number }) => any;
+    "dialog:close": (options: { name: string; data: any }) => void;
     "file:read-file": (path: string) => string;
     "file:write-file": (path: string, content: string) => void;
 
@@ -51,6 +51,7 @@ export type IpcEvents = {
 
 export type IpcRendererEvents = {
     "tray:clicked": [code: TRAY_CONTEXTMENU_CODE];
+    "dialog:closed": [name: string, data: any];
 };
 
 export interface AIModelConfig {

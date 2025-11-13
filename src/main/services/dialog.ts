@@ -1,11 +1,12 @@
-import { BrowserWindow, dialog } from "electron";
+import { BrowserWindow, dialog, webContents } from "electron";
 import { BaseService } from "./BaseService";
 import { ipc } from "./ipc";
 import { windowService } from "./window";
 import { pick } from "es-toolkit";
-import { logService } from "./log";
+import { LOG_ERROR } from "./log";
 class DialogService extends BaseService {
     private static instance: DialogService | null = null;
+    private dialogs = new Map<string, BrowserWindow>();
     private constructor() {
         super();
     }
@@ -22,10 +23,18 @@ class DialogService extends BaseService {
         ipc.handle("dialog:create", (_, options) => {
             const currentWindow = BrowserWindow.getFocusedWindow();
             if (!currentWindow) {
-                logService.error(`无法打开{${options.name}}窗口`);
+                LOG_ERROR(`无法打开{${options.name}}窗口`);
                 return;
             }
             this.create({ ...options, parentWindow: currentWindow });
+        });
+        ipc.handle("dialog:close", (_, { name, data }) => {
+            const win = this.dialogs.get(name);
+            if (!win) return;
+            webContents.getAllWebContents().forEach((wc) => {
+                ipc.send(wc, "dialog:closed", name, data);
+            });
+            win.close();
         });
     }
 
@@ -45,7 +54,7 @@ class DialogService extends BaseService {
         width?: number;
         height?: number;
     }) {
-        windowService.create(
+        const win = windowService.create(
             options.name,
             {
                 ...pick(options, ["width", "height"]),
@@ -54,6 +63,8 @@ class DialogService extends BaseService {
             },
             options.route,
         );
+        if (!win) return;
+        this.dialogs.set(options.name, win);
     }
 }
 export const dialogService = DialogService.getInstance();

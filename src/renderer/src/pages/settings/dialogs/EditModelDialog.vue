@@ -61,7 +61,7 @@ import { I18nMessageSchema } from "@renderer/i18n";
 import { useSettingsStore } from "@renderer/stores";
 import { AIModelConfig } from "@shared";
 import { FormInst, FormItemRule, NButton, NForm, NFormItem, NInput } from "naive-ui";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref, toRaw } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 
@@ -83,8 +83,7 @@ const handleSubmit = () => {
         if (errors) {
             return;
         }
-        settings.modelConfigs.push({ ...data });
-        ipc.invoke("window:close");
+        ipc.invoke("dialog:close", { name: "edit-model-dialog", data: toRaw(data) });
     });
 };
 
