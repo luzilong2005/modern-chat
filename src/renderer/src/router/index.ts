@@ -43,7 +43,7 @@ const router = createRouter({
         {
             path: "/edit-model",
             component: () => import("@renderer/pages/settings/dialogs/EditModelDialog.vue"),
-        },
+        }
     ],
 });
 

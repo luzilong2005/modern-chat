@@ -19,15 +19,11 @@
 <script setup lang="ts">
 import { IconButton } from "@renderer/components/IconButton";
 import { useContextmenu } from "@renderer/hooks";
-import { CONTEXTMENU_CODE } from "@shared";
+import { CONTEXTMENU_CODE, ConversationData } from "@shared";
 import { MoreHorizontalIcon } from "lucide-vue-next";
 
 interface Props {
-    data: {
-        id: number;
-        title: string;
-        updateDate: Date;
-    };
+    data: ConversationData;
 }
 const props = defineProps<Props>();
 

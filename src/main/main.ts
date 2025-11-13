@@ -9,6 +9,8 @@ import {
     versionService,
     windowService,
     fileService,
+    databaseService,
+    openaiService,
 } from "./services";
 import { LOG_ERROR, LOG_INFO } from "./services/log";
 
@@ -40,7 +42,11 @@ const initAllServices = () => {
     fileService.init();
     LOG_INFO("FileService initialized");
 
-    //databaseService.init();
+    databaseService.init();
+    LOG_INFO("DatabaseService initialized");
+
+    openaiService.init();
+    LOG_INFO("OpenAIService initialized");
 };
 
 const main = () => {
@@ -55,5 +61,6 @@ const main = () => {
 };
 
 app.whenReady().then(() => {
+    LOG_INFO("App is ready");
     main();
 });

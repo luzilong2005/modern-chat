@@ -46,12 +46,19 @@ export type IpcEvents = {
     "file:read-file": (path: string) => string;
     "file:write-file": (path: string, content: string) => void;
 
-    "openai:change-model": (config: { baseURL: string; apiKey: string; model: string }) => void;
+    "openai:change-model": (config: AIModelConfig) => void;
+    "openai:send-message": (config: AIModelConfig, content: string) => void;
+
+    "db:get-conversations": () => ConversationData[];
+    "db:add-conversation": (title: string) => ConversationData;
+    "db-delete-conversation": (id: number) => void;
+    "db:get-messages": (conversationId: number) => MessageData[];
 };
 
 export type IpcRendererEvents = {
     "tray:clicked": [code: TRAY_CONTEXTMENU_CODE];
     "dialog:closed": [name: string, data: any];
+    "openai:chat-stream": [any];
 };
 
 export interface AIModelConfig {
@@ -61,7 +68,7 @@ export interface AIModelConfig {
 }
 
 export interface ConversationData {
-    id: string;
+    id: number;
     title: string;
     createdDate: Date;
     updatedDate: Date;

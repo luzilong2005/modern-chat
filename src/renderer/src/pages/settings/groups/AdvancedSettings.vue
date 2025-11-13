@@ -34,9 +34,6 @@
                             <SearchIcon class="size-5" />
                         </template>
                     </NInput>
-                    <NButton @click="() => settings.$patch({ modelConfigs: [...settings.modelConfigs] })">
-                        刷新
-                    </NButton>
                     <NButton @click="handleAddModel">{{ t("pages.settings.advanced.button.add") }}</NButton>
                 </div>
                 <NEmpty v-if="settings.modelConfigs.length < 1" />

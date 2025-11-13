@@ -6,7 +6,10 @@
                     <SearchIcon class="text-mc-text-secondary size-5" />
                 </template>
             </NInput>
-            <NButton block>
+            <NButton
+                block
+                @click="handleAddConversation"
+            >
                 <template #icon>
                     <MessageSquarePlus class="size-5" />
                 </template>
@@ -16,7 +19,7 @@
         <NScrollbar>
             <div class="px-3">
                 <ConversationBox
-                    v-for="item in mockConversations"
+                    v-for="item in conversations"
                     :data="item"
                     :key="item.id"
                 />
@@ -31,7 +34,21 @@ import { NInput, NScrollbar, NButton } from "naive-ui";
 import ConversationBox from "./ConversationBox.vue";
 import { useI18n } from "vue-i18n";
 import { I18nMessageSchema } from "@renderer/i18n";
-import { mockConversations } from "@renderer/mock";
-
+import { onBeforeMount, reactive } from "vue";
+import { ConversationData } from "@shared";
+import { ipc } from "@renderer/apis";
+import dayjs from "dayjs";
 const { t } = useI18n<{ message: I18nMessageSchema }>();
+
+const conversations = reactive<ConversationData[]>([]);
+
+const handleAddConversation = () => {
+    ipc.invoke("db:add-conversation", dayjs().format("HH:mm:ss")).then((conversation: ConversationData) => {
+        conversations.push(conversation);
+    });
+};
+
+onBeforeMount(async () => {
+    conversations.push(...(await ipc.invoke("db:get-conversations")));
+});
 </script>

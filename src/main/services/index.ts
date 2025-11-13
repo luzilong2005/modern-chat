@@ -8,3 +8,4 @@ export { clipboardService } from "./clipboard";
 export { dialogService } from "./dialog";
 export { fileService } from "./file";
 export { databaseService } from "./db";
+export { openaiService } from "./openai";

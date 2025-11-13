@@ -23,7 +23,7 @@
         "format": "prettier --write .",
         "icon:build": "electron-icon-builder --input=./resources/icon.png --output=./resources/build --flatten",
         "install-electron": "node ./node_modules/electron/install",
-        "rebuild-all": "electron rebuild -f -w better-sqlite3",
+        "rebuild-all": "electron-rebuild -f -w better-sqlite3",
         "start": "electron-vite dev"
     },
     "dependencies": {
@@ -52,9 +52,9 @@
         "@faker-js/faker": "^10.1.0",
         "@tailwindcss/vite": "^4.1.17",
         "@types/better-sqlite3": "^7.6.13",
-        "@types/node": "^24.10.0",
+        "@types/node": "^24.10.1",
         "@vitejs/plugin-vue": "^6.0.1",
-        "electron": "^39.1.1",
+        "electron": "^38.6.0",
         "electron-builder": "^26.0.12",
         "electron-vite": "5.0.0-beta.3",
         "npm-run-all2": "^8.0.4",
@@ -66,7 +66,7 @@
         "rimraf": "^6.1.0",
         "tailwindcss": "^4.1.17",
         "typescript": "^5.9.3",
-        "vite": "^7.2.2"
+        "vite": "npm:rolldown-vite@^7.2.5"
     },
     "pnpm": {
         "overrides": {
