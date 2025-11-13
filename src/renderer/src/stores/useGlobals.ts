@@ -6,10 +6,12 @@ const setup = () => {
     const conversationExpanded = shallowRef(false);
     const isDark = useDark();
     const toggleConversationExpanded = useToggle(conversationExpanded);
+    const currentModel = shallowRef<string | null>(null);
     return {
         isDark,
         conversationExpanded,
         toggleConversationExpanded,
+        currentModel,
     };
 };
 
