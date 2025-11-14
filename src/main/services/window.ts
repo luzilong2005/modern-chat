@@ -85,7 +85,7 @@ class WindowService extends BaseService {
     }
 
     public getMainWindow() {
-        return this.windowInstances.get(WINDOW_NAME.MAIN) ?? null;
+        return this.windowInstances.get(WINDOW_NAME.MAIN)!;
     }
 }
 

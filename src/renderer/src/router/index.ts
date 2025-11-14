@@ -15,7 +15,7 @@ const router = createRouter({
             component: () => import("@renderer/pages/main"),
             children: [
                 {
-                    path: "chat",
+                    path: "chat/:conversationId?",
                     name: ROUTE_NAME.CHAT,
                     component: () => import("@renderer/pages/chat"),
                 },
@@ -43,7 +43,7 @@ const router = createRouter({
         {
             path: "/edit-model",
             component: () => import("@renderer/pages/settings/dialogs/EditModelDialog.vue"),
-        }
+        },
     ],
 });
 

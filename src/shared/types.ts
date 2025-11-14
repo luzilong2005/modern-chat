@@ -1,5 +1,30 @@
+import type OpenAI from "openai";
 import { TRAY_CONTEXTMENU_CODE, CONTEXTMENU_CODE, WINDOW_NAME } from "./enums";
 import electron from "electron";
+
+export interface AIModelConfig {
+    model: string;
+    baseURL: string;
+    apiKey: string;
+}
+
+export interface ConversationData {
+    id: number;
+    title: string;
+    createdDate: Date;
+    updatedDate: Date;
+}
+
+export interface MessageData {
+    conversationId: string;
+    id: string;
+    content: string;
+    createdDate: Date;
+    updatedDate: Date;
+    role: "user" | "assistant";
+    model: string;
+}
+
 export type IpcEvents = {
     "app:quit": () => void;
     "app:relaunch": () => void;
@@ -47,7 +72,7 @@ export type IpcEvents = {
     "file:write-file": (path: string, content: string) => void;
 
     "openai:change-model": (config: AIModelConfig) => void;
-    "openai:send-message": (config: AIModelConfig, content: string) => void;
+    "openai:send-message": (config: AIModelConfig, contextMessages: MessageData[], content: string) => void;
 
     "db:get-conversations": () => ConversationData[];
     "db:add-conversation": (title: string) => ConversationData;
@@ -58,33 +83,5 @@ export type IpcEvents = {
 export type IpcRendererEvents = {
     "tray:clicked": [code: TRAY_CONTEXTMENU_CODE];
     "dialog:closed": [name: string, data: any];
-    "openai:chat-stream": [any];
+    "openai:chat-stream": [chunk: OpenAI.Chat.ChatCompletionChunk];
 };
-
-export interface AIModelConfig {
-    model: string;
-    baseURL: string;
-    apiKey: string;
-}
-
-export interface ConversationData {
-    id: number;
-    title: string;
-    createdDate: Date;
-    updatedDate: Date;
-}
-
-export interface MessageData {
-    conversationId: string;
-    id: string;
-    content: string;
-    createdDate: Date;
-    updatedDate: Date;
-    role: "user" | "assistant";
-}
-
-export interface UserMessageData extends MessageData {}
-
-export interface BotMessageData extends MessageData {
-    modelName: string;
-}

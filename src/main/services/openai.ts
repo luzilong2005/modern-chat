@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { BaseService } from "./BaseService";
 import { ipc } from "./ipc";
+import { windowService } from "./window";
 
 class OpenAIService extends BaseService {
     private static instance: OpenAIService | null = null;
@@ -10,16 +11,16 @@ class OpenAIService extends BaseService {
     }
 
     private setupIpcEvents() {
-        ipc.handle("openai:send-message", async (_, { apiKey, baseURL, model }, content) => {
-            console.log(content);
+        ipc.handle("openai:send-message", async (_, { apiKey, baseURL, model }, contextMessages, content) => {
+            const mainWindow = windowService.getMainWindow();
             this.client = new OpenAI({ apiKey, baseURL });
             const stream = await this.client.chat.completions.create({
                 model,
-                messages: [{ role: "user", content }],
+                messages: [...contextMessages, { role: "user", content }],
                 stream: true,
             });
             for await (const chunk of stream) {
-                console.dir(chunk);
+                ipc.send(mainWindow.webContents, "openai:chat-stream", chunk);
             }
         });
     }
@@ -32,8 +33,6 @@ class OpenAIService extends BaseService {
         super.init();
         this.setupIpcEvents();
     }
-
-    public async chat() {}
 }
 
 export const openaiService = OpenAIService.getInstance();

@@ -32,6 +32,7 @@ import { useSettingsStore } from "@renderer/stores";
 const settings = useSettingsStore();
 const content = shallowRef("");
 const handleSendMessage = () => {
-    ipc.invoke("openai:send-message", toRaw(settings.modelConfigs[0]), content.value);
+    ipc.invoke("openai:send-message", toRaw(settings.modelConfigs[0]), [], content.value);
+    ipc.on("openai:chat-stream", (_, chunk) => {});
 };
 </script>
