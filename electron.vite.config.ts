@@ -32,6 +32,7 @@ export default defineConfig({
     },
     preload: {
         build: {
+            ssr: false,
             bytecode: true,
             outDir: path.join(OUT_DIR, "preload"),
             lib: {
