@@ -19,8 +19,7 @@ export default defineConfig({
             },
         },
         build: {
-            ssr: false,
-            bytecode: true,
+            bytecode: { transformArrowFunctions: true },
             outDir: path.join(OUT_DIR, "main"),
             lib: {
                 entry: path.join(SRC_DIR, "main/main.ts"),
@@ -32,7 +31,6 @@ export default defineConfig({
     },
     preload: {
         build: {
-            ssr: false,
             bytecode: true,
             outDir: path.join(OUT_DIR, "preload"),
             lib: {
