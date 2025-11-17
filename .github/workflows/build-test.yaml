@@ -1,4 +1,4 @@
-name: Build Electron App (Windows)
+name: Build test Electron App (Windows)
 
 # 触发条件：main 分支 push 或手动触发
 on:
@@ -52,14 +52,3 @@ jobs:
             # 构建 Electron 应用（仅 Windows）
             - name: Build Electron App for Windows
               run: pnpm run build-win
-
-            # 上传构建产物
-            - name: Create Draft Release (no tag)
-              uses: softprops/action-gh-release@v2
-              with:
-                files: releases/*
-                draft: true
-                name: "Windows Build (Draft)"
-                tag_name: ""
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

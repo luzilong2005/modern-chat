@@ -28,6 +28,7 @@ const config: Configuration = {
     electronDownload: {
         mirror: "https://npmmirror.com/mirrors/electron/",
     },
+    publish: null,
 };
 
 export default config;
