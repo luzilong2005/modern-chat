@@ -2,7 +2,7 @@
     "name": "modern-chat",
     "version": "1.0.0",
     "private": true,
-    "description": "",
+    "description": "Vue 3 + TypeScript + Electron 开发的现代AI聊天应用",
     "keywords": [
         "electron",
         "chat",
@@ -15,6 +15,7 @@
     "type": "module",
     "main": "out/main/main.js",
     "scripts": {
+        "build-only": "run-s clean icon:build renderer:build electron:build:win:x64 electron:build:win:arm64",
         "clean": "rimraf -g out releases",
         "dev": "electron-vite dev --watch",
         "electron:base-build": "electron-builder --config electron-builder.config.ts build",
