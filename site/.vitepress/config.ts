@@ -10,7 +10,6 @@ export default defineConfig({
             { text: "首页", link: "/" },
             { text: "下载", link: "/pages/downloads" },
         ],
-
         sidebar: [
             {
                 text: "指南",
@@ -21,12 +20,14 @@ export default defineConfig({
                         text: "下载",
                         link: "/downloads",
                     },
+                    {
+                        text: "示例",
+                        link: "/examples",
+                    },
                 ],
             },
         ],
-
         search: { provider: "local" },
-
         socialLinks: [{ icon: "github", link: "https://github.com/luzilong2005/modern-chat.git" }],
     },
 });
