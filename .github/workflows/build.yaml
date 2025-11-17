@@ -1,62 +1,61 @@
-# .github/workflows/build.yaml
 name: Build Electron App (Windows)
 
 # 触发条件：main 分支 push 或手动触发
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
+    build:
+        runs-on: windows-latest
 
-    steps:
-      # 检出代码
-      - name: Checkout repository
-        uses: actions/checkout@v4
+        steps:
+            # 检出代码
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-      # 安装 Node.js 22
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+            # 安装 Node.js 22
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22"
 
-      # 安装 pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9  # 可根据需要调整版本
-          run_install: false
+            # 安装 pnpm
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 10
+                  run_install: false
 
-      # 获取 pnpm 缓存路径
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+            # 获取 pnpm 缓存路径
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # 配置缓存
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            # 配置缓存
+            - name: Setup pnpm cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
 
-      # 安装依赖
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+            # 安装依赖
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-      # 构建 Electron 应用（仅 Windows）
-      - name: Build Electron App for Windows
-        run: pnpm run build-only
+            # 构建 Electron 应用（仅 Windows）
+            - name: Build Electron App for Windows
+              run: pnpm run build-only
 
-      # 上传构建产物（可选）
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: electron-app-windows
-          path: releases/
+            # 上传构建产物（可选）
+            - name: Upload build artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: electron-app-windows
+                  path: releases/
