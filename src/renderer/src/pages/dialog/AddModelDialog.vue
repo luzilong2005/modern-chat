@@ -19,7 +19,7 @@
                 <ElInput v-model:model-value="data.baseURL" />
             </ElFormItem>
             <ElFormItem :label="t('pages.dialog.model.form.apiKey')">
-                <ElInput v-model:model-value="data.apiKey" />
+                <ElInput v-model:model-value="data.apiKey" show-password/>
             </ElFormItem>
             <div class="flex justify-end">
                 <ElButton
