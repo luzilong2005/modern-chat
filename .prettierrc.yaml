@@ -1,0 +1,13 @@
+printWidth: 128
+tabWidth: 4
+quoteProps: consistent
+singleAttributePerLine: true
+endOfLine: lf
+plugins:
+    #     - "@trivago/prettier-plugin-sort-imports"
+    #     - "prettier-plugin-organize-imports"
+    - "prettier-plugin-packagejson"
+    - "prettier-plugin-organize-attributes"
+    #     - "prettier-plugin-classnames"
+    - "prettier-plugin-tailwindcss"
+    - "prettier-plugin-merge"

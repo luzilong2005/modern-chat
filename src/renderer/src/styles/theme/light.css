@@ -1,0 +1,11 @@
+:root {
+    --primary: var(--color-emerald-500);
+    --app-sidebar: var(--color-neutral-100);
+    --background: var(--color-neutral-50);
+    --border: var(--color-neutral-300);
+    --hover: color-mix(in srgb, black, transparent 95%);
+    --text-primary: var(--color-neutral-900);
+    --text-secondary: var(--color-neutral-800);
+    --cursor: var(--color-emerald-500);
+    --input-box: var(--color-neutral-200);
+}

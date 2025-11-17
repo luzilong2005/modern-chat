@@ -1,0 +1,14 @@
+.prettierignore
+.gitignored
+*lock*
+LICENSE*
+release
+cache
+log*
+temp
+tmp
+**/dist
+**/build
+**/out
+**/node_modules
+**/log*

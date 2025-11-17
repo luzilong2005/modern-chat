@@ -1,0 +1,74 @@
+{
+    "meta": {
+        "language": "English",
+        "languageCode": "en-US"
+    },
+    "tray": {
+        "open": "Open",
+        "quit": "Quit"
+    },
+    "contextmenu": {
+        "copy": "Copy",
+        "delete": "Delete",
+        "rename": "Rename"
+    },
+    "pages": {
+        "chat": {},
+        "about": {},
+        "settings": {
+            "appearance": {
+                "title": "Appearance",
+                "theme": {
+                    "title": "Theme",
+                    "light": "Light",
+                    "dark": "Dark",
+                    "system": "Follow System"
+                },
+                "language": {
+                    "title": "Language"
+                }
+            },
+            "advanced": {
+                "title": "Advanced",
+                "exportSetting": "Export Settings",
+                "importSetting": "Import Settings",
+                "enableTray": "Enable System Tray",
+                "openLogDir": "Open Log Directory",
+                "cleanupLogs": "Cleanup Logs"
+            }
+        },
+        "history": {
+            "title": "History",
+            "search": "Search"
+        },
+        "dialog": {
+            "model": {
+                "add": "Add Model",
+                "edit": "Edit Model",
+                "delete": "Delete Model",
+                "form": {
+                    "model": "Model",
+                    "baseURL": "Base URL",
+                    "apiKey": "API Key"
+                },
+                "buttons": { "ok": "OK", "cancel": "Cancel" }
+            }
+        }
+    },
+    "titlebar": {
+        "close": "Close",
+        "minimize": "Minimize",
+        "maximize": "Maximize",
+        "unmaximize": "Unmaximize"
+    },
+    "sidebar": {
+        "chat": "Chat",
+        "history": "History",
+        "about": "About",
+        "settings": "Settings"
+    },
+    "window": {
+        "settings": "Settings",
+        "about": "About"
+    }
+}

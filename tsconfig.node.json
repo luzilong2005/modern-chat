@@ -1,0 +1,11 @@
+{
+    "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+    "compilerOptions": {
+        "types": ["node", "electron-vite/node"],
+        "baseUrl": ".",
+        "paths": {
+            "@shared": ["./src/shared/index.ts"]
+        }
+    },
+    "include": ["./src/main/**/*.ts", "**/*.config.ts"]
+}

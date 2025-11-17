@@ -1,0 +1,13 @@
+@import "tailwindcss";
+/* @import "tailwind-scrollbar-hide/v4"; */
+@import "./utils.css";
+
+@import "./theme/index.css";
+
+/* @import "@fontsource-variable/cascadia-code";
+@import "@fontsource-variable/inter";
+body {
+    font-family: "Inter Variable", "Cascadia Code Variable", sans-serif;
+} */
+@import "element-plus/dist/index.css";
+@import "element-plus/theme-chalk/dark/css-vars.css";

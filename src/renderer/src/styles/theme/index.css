@@ -1,0 +1,16 @@
+@import "./light.css";
+@import "./dark.css";
+
+@theme {
+    --color-mc-primary: var(--primary);
+    --color-mc-background: var(--background);
+    --color-mc-hover: var(--hover);
+    --color-mc-navbar: var(--navbar);
+    --color-mc-border: var(--border);
+    --color-mc-text-primary: var(--text-primary);
+    --color-mc-text-secondary: var(--text-secondary);
+    --color-mc-cursor: var(--cursor);
+    --color-mc-input-box: var(--input-box);
+    --color-mc-app-sidebar: var(--app-sidebar);
+    --color-mc-active: var(--active);
+}

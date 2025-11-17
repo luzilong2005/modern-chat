@@ -1,0 +1,25 @@
+{
+    "cSpell.words": [
+        "AUTOINCREMENT",
+        "classnames",
+        "contextmenu",
+        "dompurify",
+        "lucide",
+        "luzilong",
+        "maximizable",
+        "minimizable",
+        "nsis",
+        "packagejson",
+        "persistedstate",
+        "srgb",
+        "titlebar",
+        "trivago",
+        "undocked",
+        "unmaximize",
+        "vueuse"
+    ],
+    "prettier.configPath": ".prettierrc.yaml",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    }
+}
