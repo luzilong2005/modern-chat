@@ -19,6 +19,7 @@ export default defineConfig({
             },
         },
         build: {
+            ssr: false,
             bytecode: true,
             outDir: path.join(OUT_DIR, "main"),
             lib: {
