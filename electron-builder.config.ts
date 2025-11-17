@@ -19,6 +19,7 @@ const config: Configuration = {
         ],
     },
     nsis: {
+        oneClick: false,
         createDesktopShortcut: true,
         createStartMenuShortcut: true,
         installerLanguages: ["zh_CN"],
@@ -26,7 +27,7 @@ const config: Configuration = {
     },
     electronDownload: {
         mirror: "https://npmmirror.com/mirrors/electron/",
-    }
+    },
 };
 
 export default config;
