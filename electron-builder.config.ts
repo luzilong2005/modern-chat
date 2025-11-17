@@ -29,8 +29,8 @@ const config: Configuration = {
     electronDownload: {
         mirror: "https://npmmirror.com/mirrors/electron/",
     },
-    //nodeGypRebuild: true,
-    //buildDependenciesFromSource: true,
+    nodeGypRebuild: true,
+    buildDependenciesFromSource: true,
 };
 
 export default config;
