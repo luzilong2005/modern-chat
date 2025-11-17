@@ -51,9 +51,9 @@ jobs:
 
             # 构建 Electron 应用（仅 Windows）
             - name: Build Electron App for Windows
-              run: pnpm run build-only
+              run: pnpm run build-win
 
-            # 上传构建产物（可选）
+            # 上传构建产物
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:

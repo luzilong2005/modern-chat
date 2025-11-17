@@ -19,8 +19,6 @@ const config: Configuration = {
         ],
     },
     nsis: {
-        oneClick: false,
-        perMachine: true,
         createDesktopShortcut: true,
         createStartMenuShortcut: true,
         installerLanguages: ["zh_CN"],
@@ -28,9 +26,7 @@ const config: Configuration = {
     },
     electronDownload: {
         mirror: "https://npmmirror.com/mirrors/electron/",
-    },
-    nodeGypRebuild: true,
-    buildDependenciesFromSource: true,
+    }
 };
 
 export default config;

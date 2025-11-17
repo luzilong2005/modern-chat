@@ -3,7 +3,7 @@ import { type AliasOptions } from "vite";
 import path from "node:path";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
-const ROOT_DIR = path.join(__dirname, ".");
+const ROOT_DIR = path.resolve(__dirname, ".");
 const OUT_DIR = path.join(ROOT_DIR, "out");
 const SRC_DIR = path.join(ROOT_DIR, "src");
 
@@ -24,6 +24,9 @@ export default defineConfig({
             lib: {
                 entry: path.join(SRC_DIR, "main/main.ts"),
             },
+            rolldownOptions: {
+                output: { format: "cjs" },
+            },
         },
     },
     preload: {
@@ -32,6 +35,9 @@ export default defineConfig({
             outDir: path.join(OUT_DIR, "preload"),
             lib: {
                 entry: path.join(SRC_DIR, "preload/preload.ts"),
+            },
+            rolldownOptions: {
+                output: { format: "cjs" },
             },
         },
     },

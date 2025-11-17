@@ -1,6 +1,9 @@
 # Modern Chat
 
 ## 描述
+
+! 目前只支持Windows
+
 核心技术
 - Vue
 - TypeScript
@@ -15,10 +18,7 @@
 git clone https://github.com/luzilong2005/modern-chat.git
 ```
 
-2.依次实行
+2.运行脚本
 ```shell
-pnpm run clean
-pnpm run icon:build
-pnpm run renderer:build
-pnpm run electron:build:win:x64 # 选择合适的架构
+pnpm run build-win
 ```
