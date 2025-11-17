@@ -18,7 +18,7 @@
         "build-win": "run-s rebuild-all clean icon:build vite:build-electron electron:build:win:x64 electron:build:win:arm64",
         "clean": "rimraf -g out releases",
         "dev": "electron-vite dev --watch",
-        "vite:build-electron":"electron-vite build",
+        "vite:build-electron": "electron-vite build",
         "electron:base-build": "electron-builder --config electron-builder.config.ts build",
         "electron:build:win:arm64": "pnpm run electron:base-build --win --arm64",
         "electron:build:win:x64": "pnpm run electron:base-build --win --x64",
@@ -53,6 +53,7 @@
         "vue-router": "^4.6.3"
     },
     "devDependencies": {
+        "@babel/plugin-transform-arrow-functions": "^7.27.1",
         "@electron-toolkit/tsconfig": "^2.0.0",
         "@electron/rebuild": "^4.0.1",
         "@faker-js/faker": "^10.1.0",
