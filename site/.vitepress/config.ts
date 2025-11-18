@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-    base: "/modern-chat",
+    base: "/",
     title: "Modern Chat",
     description: "Modern Chat 文档",
     appearance: { initialValue: "dark" },
