@@ -3,8 +3,10 @@ name: Build test Electron App (Windows)
 # 触发条件：main 分支 push 或手动触发
 on:
     push:
-        branches:
-            - main
+        branches: [main]
+        paths:
+            - "!site/**"
+            - "!.github/workflows/build-docs-site.yaml"
     workflow_dispatch:
 
 jobs:

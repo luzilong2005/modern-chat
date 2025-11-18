@@ -5,6 +5,7 @@ const config: Configuration = {
     files: ["out", "locales", "resources"],
     directories: {
         output: "release",
+        buildResources: "resources/build",
     },
     win: {
         target: [

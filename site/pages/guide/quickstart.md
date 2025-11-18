@@ -5,4 +5,4 @@
 
 ![An image](/setup2.png)
 
-![An image](/setup.png)
+![An image](/setup3.png)
