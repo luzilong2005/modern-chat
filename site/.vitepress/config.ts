@@ -1,7 +1,8 @@
 import { defineConfig } from "vitepress";
-
+import path from "node:path";
 export default defineConfig({
     base: "/",
+    outDir: path.resolve(__dirname, "../dist"),
     title: "Modern Chat",
     description: "Modern Chat 文档",
     appearance: { initialValue: "dark" },
